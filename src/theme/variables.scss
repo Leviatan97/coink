@@ -4,20 +4,20 @@
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
-  --ion-color-primary: #3880ff;
-  --ion-color-primary-rgb: 56, 128, 255;
-  --ion-color-primary-contrast: #ffffff;
-  --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #3171e0;
-  --ion-color-primary-tint: #4c8dff;
+  --ion-color-primary: #1EEA00;
+	--ion-color-primary-rgb: 30,234,0;
+	--ion-color-primary-contrast: #004B40;
+	--ion-color-primary-contrast-rgb: 255,255,255;
+	--ion-color-primary-shade: #1ace00;
+	--ion-color-primary-tint: #35ec1a;
 
   /** secondary **/
-  --ion-color-secondary: #3dc2ff;
-  --ion-color-secondary-rgb: 61, 194, 255;
-  --ion-color-secondary-contrast: #ffffff;
-  --ion-color-secondary-contrast-rgb: 255, 255, 255;
-  --ion-color-secondary-shade: #36abe0;
-  --ion-color-secondary-tint: #50c8ff;
+  --ion-color-secondary: #004B40;
+	--ion-color-secondary-rgb: 0,75,64;
+	--ion-color-secondary-contrast: #ffffff;
+	--ion-color-secondary-contrast-rgb: 255,255,255;
+	--ion-color-secondary-shade: #004238;
+	--ion-color-secondary-tint: #1a5d53;
 
   /** tertiary **/
   --ion-color-tertiary: #5260ff;
@@ -233,4 +233,26 @@
 
     --ion-card-background: #1e1e1e;
   }
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf') 
+  format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat-bold';
+  src: url('../assets/fonts/Montserrat/static/Montserrat-Bold.ttf')
+  format('truetype');
+}
+
+@font-face {
+  font-family: 'Avenir-LT-Std';
+  src: url('../assets/fonts/AvenirLTStd/FontsFree-Net-AvenirLTStd-Book.ttf')
+  format('truetype');
+}
+
+.back-button-has-icon-only{
+  height: 0%;
 }
