@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { GetDataService } from '../services/get-data.service';
+
 
 @Component({
   selector: 'app-registro',
@@ -9,10 +12,9 @@ export class RegistroPage implements OnInit {
 
   telefono: number;
   numValido: boolean = false;
-  msgTexto: boolean = false;
   numTexto: number;
 
-  constructor() { }
+  constructor(private router: Router, private getData: GetDataService) { }
 
   ngOnInit() {
   }
@@ -21,12 +23,6 @@ export class RegistroPage implements OnInit {
     !this.telefono ? this.telefono = numero : 
     this.telefono = parseInt(this.telefono.toString() + numero.toString());
     this.telefono.toString().length == 10 ? this.numValido = true : this.numValido = false;
-  }
-
-  ingresarNumeroTexto(numero: number): void {
-    !this.numTexto ? this.numTexto = numero : 
-    this.numTexto = parseInt(this.numTexto.toString() + numero.toString());
-    this.numTexto.toString().length == 4 ? console.log('numero valido') : console.log('numero invalido');
   }
 
   borrarNumero(): void {
@@ -39,14 +35,11 @@ export class RegistroPage implements OnInit {
     this.numValido = false;
   }
 
-  borrarNumeroTexto(): void {
-    const longitud = this.numTexto.toString().length - 1;
-    this.numTexto = parseInt(this.numTexto.toString().substring(0, longitud));
-    isNaN(this.numTexto) ? this.numTexto = undefined : null;
-  }
-
   enviarNumero(): void {
-    this.msgTexto = true;
+    this.getData.numeroTelefono = this.telefono;
+    console.log(this.getData.numeroTelefono);
+    
+    this.router.navigate(['/registro/codigo-seguridad']);
   }
 
 }

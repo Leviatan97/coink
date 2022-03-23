@@ -1,0 +1,88 @@
+<div id="miModal" class="modal" *ngIf="alert == true">
+  <div class="modal-contenido">
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="12" class="cerrar">
+          <ion-icon name="close-circle" color="danger" (click)="cerrar()"></ion-icon>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" class="texto">CÓDIGO INCORRECTO</ion-col>
+      </ion-row>
+    </ion-grid>
+    <p>El código que ingresaste es incorrecto, enviaremos un nuevo código a tu correo electrónico.</p>
+    <ion-label>Reenviar código</ion-label>
+  </div>  
+</div>
+<ion-header>
+  <ion-toolbar>
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="2">
+          <ion-back-button
+          color="primary"
+          defaultHref="registro"
+          icon="chevron-back-outline"
+        ></ion-back-button>
+        </ion-col>
+        <ion-col size="10">
+          <ion-title class="tittle">NÚMERO CELULAR</ion-title>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-img src="../../../assets/img/tab/1de3.svg" class="tab"></ion-img>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content">
+    <ion-item>
+      <ion-img src="../../assets/img/Oink.svg" class="img"></ion-img>
+      <p>Digíta el código que recibiste vía 
+        <span>mensaje de texto</span> al 
+        <br>{{telefono}}
+      </p>
+    </ion-item>
+    <div class="contentInput">
+      <ion-input 
+        type="text"
+        placeholder="X X X X"
+        class="input"
+        disabled
+        [(ngModel)]="numTexto"
+        max="4"
+      ></ion-input>
+      <ion-grid fixed class="tel">
+        <ion-row>
+          <ion-col size="4" class="tel" (click)="ingresarNumeroTexto(1)">1</ion-col>
+          <ion-col size="4" class="tel" (click)="ingresarNumeroTexto(2)">2</ion-col>
+          <ion-col size="4" class="tel" (click)="ingresarNumeroTexto(3)">3</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="4" class="tel" (click)="ingresarNumeroTexto(4)">4</ion-col>
+          <ion-col size="4" class="tel" (click)="ingresarNumeroTexto(5)">5</ion-col>
+          <ion-col size="4" class="tel" (click)="ingresarNumeroTexto(6)">6</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="4" class="tel" (click)="ingresarNumeroTexto(7)">7</ion-col>
+          <ion-col size="4" class="tel" (click)="ingresarNumeroTexto(8)">8</ion-col>
+          <ion-col size="4" class="tel" (click)="ingresarNumeroTexto(9)">9</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="4" class="tel">
+            
+          </ion-col>
+          <ion-col size="4" class="tel" (click)="ingresarNumeroTexto(0)">0</ion-col>
+          <ion-col size="4" class="tel" (click)="borrarNumeroTexto()">
+            <ion-icon name="backspace-outline"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+</ion-content>
+

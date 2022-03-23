@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: RegistroPage
+  },
+  {
+    path: 'codigo-seguridad',
+    loadChildren: () => import('./codigo-seguridad/codigo-seguridad.module').then( m => m.CodigoSeguridadPageModule)
   }
 ];
 

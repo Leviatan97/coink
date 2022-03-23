@@ -24,3 +24,32 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+ion-alert.alert-message .texto {
+    text-align: center;
+}
+
+button.retry-button {
+    font-family: Montserrat-bold;
+    color: #004B40 !important;
+    text-transform: inherit !important;
+    font-size: 16px;
+}
+
+.alert-wrapper.ion-overlay-wrapper.sc-ion-alert-md .alert-button-group.sc-ion-alert-md {
+    justify-content: center;
+}
+
+
+ion-input input.native-input[disabled].sc-ion-input-md {
+    opacity: 1;
+}
+
+ion-alert.alert-message ion-icon.md.hydrated {
+    color: #F44336;
+}
+
+ion-col.cerrar {
+    text-align: end;
+    font-size: 23px;
+}

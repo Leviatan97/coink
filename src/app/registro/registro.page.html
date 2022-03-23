@@ -23,7 +23,7 @@
 </ion-header>
 
 <ion-content>
-  <div class="content" *ngIf="msgTexto === false">
+  <div class="content">
     <ion-item>
       <ion-img src="../../assets/img/Oink.svg" class="img"></ion-img>
       <p>
@@ -64,51 +64,6 @@
             <ion-fab-button class="checkButton" [disabled]="!numValido" (click)="enviarNumero()">
               <ion-icon name="checkmark-outline"></ion-icon>
             </ion-fab-button>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </div>
-  </div>
-  <div class="content" *ngIf="msgTexto === true">
-    <ion-item>
-      <ion-img src="../../assets/img/Oink.svg" class="img"></ion-img>
-      <p>Digíta el código que recibiste vía 
-        <span>mensaje de texto</span> al 
-        <br>{{telefono}}
-      </p>
-    </ion-item>
-    <div class="contentInput">
-      <ion-input 
-        type="tel"
-        placeholder="X X X X"
-        class="input"
-        disabled
-        [(ngModel)]="numTexto"
-        max="4"
-      ></ion-input>
-      <ion-grid fixed class="tel">
-        <ion-row>
-          <ion-col size="4" class="tel" (click)="ingresarNumeroTexto(1)">1</ion-col>
-          <ion-col size="4" class="tel" (click)="ingresarNumeroTexto(2)">2</ion-col>
-          <ion-col size="4" class="tel" (click)="ingresarNumeroTexto(3)">3</ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col size="4" class="tel" (click)="ingresarNumeroTexto(4)">4</ion-col>
-          <ion-col size="4" class="tel" (click)="ingresarNumeroTexto(5)">5</ion-col>
-          <ion-col size="4" class="tel" (click)="ingresarNumeroTexto(6)">6</ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col size="4" class="tel" (click)="ingresarNumeroTexto(7)">7</ion-col>
-          <ion-col size="4" class="tel" (click)="ingresarNumeroTexto(8)">8</ion-col>
-          <ion-col size="4" class="tel" (click)="ingresarNumeroTexto(9)">9</ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col size="4" class="tel">
-            
-          </ion-col>
-          <ion-col size="4" class="tel" (click)="ingresarNumeroTexto(0)">0</ion-col>
-          <ion-col size="4" class="tel" (click)="borrarNumeroTexto()">
-            <ion-icon name="backspace-outline"></ion-icon>
           </ion-col>
         </ion-row>
       </ion-grid>
