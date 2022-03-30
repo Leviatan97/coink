@@ -1,19 +1,3 @@
-<div id="miModal" class="modal" *ngIf="alert == true">
-  <div class="modal-contenido">
-    <ion-grid fixed>
-      <ion-row>
-        <ion-col size="12" class="cerrar">
-          <ion-icon name="close-circle" color="danger" (click)="cerrar()"></ion-icon>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size="12" class="texto">CÓDIGO INCORRECTO</ion-col>
-      </ion-row>
-    </ion-grid>
-    <p>El código que ingresaste es incorrecto, enviaremos un nuevo código a tu correo electrónico.</p>
-    <ion-label>Reenviar código</ion-label>
-  </div>  
-</div>
 <ion-header>
   <ion-toolbar>
     <ion-grid fixed>
@@ -26,12 +10,12 @@
         ></ion-back-button>
         </ion-col>
         <ion-col size="10">
-          <ion-title class="tittle">NÚMERO CELULAR</ion-title>
+          <ion-title class="tittle">DATOS DE CUENTA</ion-title>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col size="12">
-          <ion-img src="../../../assets/img/tab/1de3.svg" class="tab"></ion-img>
+          <ion-img src="../../../assets/img/tab/2de3.svg" class="tab"></ion-img>
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -42,46 +26,150 @@
   <div class="content">
     <ion-item>
       <ion-img src="../../assets/img/Oink.svg" class="img"></ion-img>
-      <p>Digíta el código que recibiste vía 
-        <span>mensaje de texto</span> al 
-        <br>{{telefono}}
-      </p>
+      <div>
+        <label class="tittle">¿CUÁLES SON TUS DATOS?</label>
+        <p>Ahora necesitamos saber algunos datos tuyos</p>
+      </div>
     </ion-item>
     <div class="contentInput">
-      <ion-input 
-        type="text"
-        placeholder="X X X X"
-        class="input"
-        disabled
-        [(ngModel)]="numTexto"
-        max="4"
-      ></ion-input>
-      <ion-grid fixed class="tel">
-        <ion-row>
-          <ion-col size="4" class="tel" (click)="ingresarNumeroTexto(1)">1</ion-col>
-          <ion-col size="4" class="tel" (click)="ingresarNumeroTexto(2)">2</ion-col>
-          <ion-col size="4" class="tel" (click)="ingresarNumeroTexto(3)">3</ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col size="4" class="tel" (click)="ingresarNumeroTexto(4)">4</ion-col>
-          <ion-col size="4" class="tel" (click)="ingresarNumeroTexto(5)">5</ion-col>
-          <ion-col size="4" class="tel" (click)="ingresarNumeroTexto(6)">6</ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col size="4" class="tel" (click)="ingresarNumeroTexto(7)">7</ion-col>
-          <ion-col size="4" class="tel" (click)="ingresarNumeroTexto(8)">8</ion-col>
-          <ion-col size="4" class="tel" (click)="ingresarNumeroTexto(9)">9</ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col size="4" class="tel">
-            
-          </ion-col>
-          <ion-col size="4" class="tel" (click)="ingresarNumeroTexto(0)">0</ion-col>
-          <ion-col size="4" class="tel" (click)="borrarNumeroTexto()">
-            <ion-icon name="backspace-outline"></ion-icon>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+      <form [formGroup]="form" method="post">
+        <ion-label>Documeto de identidad</ion-label>
+        <ion-item>
+          <ion-label position="floating">Tipo de documento</ion-label>
+          <ion-select formControlName="tdocumento" interface="popover">
+            <ion-select-option *ngFor="let documento of tpDocumento" value="{{documento.notation}}">{{documento.description}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <div class="alert-danger" *ngIf="tdocumento.invalid && (tdocumento.dirty || tdocumento.touched)">
+          <div class="container-error-message" *ngIf="tdocumento.errors.required">
+              <ion-icon slot="start" name="alert-circle-outline"></ion-icon> El campo es requerido
+          </div>
+        </div>
+
+        <ion-item>
+          <ion-label position="floating">Número de documento</ion-label>
+          <ion-input type="number" formControlName="ndocumento"></ion-input>
+        </ion-item>
+
+        <div class="alert-danger" *ngIf="!ndocumento.valid && (ndocumento.dirty || ndocumento.touched)">
+          <div class="container-error-message" *ngIf="ndocumento.errors.required">
+              <ion-icon slot="start" name="alert-circle-outline"></ion-icon> El campo es requerido
+          </div>
+          <div class="container-error-message" *ngIf="ndocumento.errors.max">
+            <ion-icon name="alert-circle-outline"></ion-icon> El campo supero el limite
+          </div>
+          <div class="container-error-message" *ngIf="ndocumento.errors.min">
+            <ion-icon name="alert-circle-outline"></ion-icon> El campo debe ser superior a 8 digitos
+          </div>
+        </div>
+
+        <ion-item>
+          <ion-label position="floating">Fecha de nacimiento</ion-label>
+          <ion-input [value]="dateValue" id="open-date-input"></ion-input>
+          <ion-popover trigger="open-date-input" show-backdrop="false">
+            <ng-template>
+              <ion-datetime
+                formControlName="fnacimiento"
+                #popoverDatetime
+                presentation="date"
+                (ionChange)="dateValue = formatDate(popoverDatetime.value)"
+              ></ion-datetime>
+            </ng-template>
+          </ion-popover>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Fecha de expedición del documento</ion-label>
+          <ion-input [value]="dateValue2" id="open-date-input-2"></ion-input>
+          <ion-popover trigger="open-date-input-2" show-backdrop="false">
+            <ng-template>
+              <ion-datetime
+                formControlName="fexpedicion"
+                #popoverDatetime2
+                presentation="date"
+                (ionChange)="dateValue2 = formatDate(popoverDatetime2.value)"
+              ></ion-datetime>
+            </ng-template>
+          </ion-popover>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Genero</ion-label>
+          <ion-select formControlName="genero" interface="popover">
+            <ion-select-option *ngFor="let genero of tpGenero" value="{{genero.description}}">{{genero.name}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <div class="alert-danger" *ngIf="genero.invalid && (genero.dirty || genero.touched)">
+          <div class="container-error-message" *ngIf="genero.errors.required">
+              <ion-icon slot="start" name="alert-circle-outline"></ion-icon> El campo es requerido
+          </div>
+        </div>
+
+        <ion-label>Configura tu cuenta</ion-label>
+        <ion-item>
+          <ion-label position="floating">Correo electrónico</ion-label>
+          <ion-input formControlName="email" type="email" (ionChange)="validarCorreo()"></ion-input>
+        </ion-item>
+
+        <div class="alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+          <div class="container-error-message" *ngIf="email.errors.required">
+              <ion-icon slot="start" name="alert-circle-outline"></ion-icon> El campo es requerido
+          </div>
+          <div class="container-error-message" *ngIf="(email.dirty || email.touched) && email.invalid && email.errors.pattern">
+              <ion-icon slot="start" name="alert-circle-outline"></ion-icon> El correo no es valido
+          </div>
+        </div>
+        
+        <ion-item>
+          <ion-label position="floating">Confirmar correo electrónico</ion-label>
+          <ion-input formControlName="email2" type="email" (ionChange)="validarCorreo()"></ion-input>
+        </ion-item>
+
+        <div class="alert-danger" *ngIf="email2.invalid && (email2.dirty || email2.touched)">
+          <div class="container-error-message" *ngIf="email2.errors.required">
+              <ion-icon slot="start" name="alert-circle-outline"></ion-icon> El campo es requerido
+          </div>
+          <div class="container-error-message" *ngIf="(email2.dirty || email2.touched) && email2.invalid && email2.errors.pattern">
+              <ion-icon slot="start" name="alert-circle-outline"></ion-icon> El correo no es valido
+          </div>
+        </div>
+        <div class="alert-danger" *ngIf="(email2.dirty || email2.touched) && !correoIgual == true">
+          <div class="container-error-message">
+            <ion-icon slot="start" name="alert-circle-outline"></ion-icon> Este campo no coincide con el correo electrónico
+          </div>
+        </div>
+
+        <ion-item>
+          <ion-label position="floating">PIN de seguridad</ion-label>
+          <ion-input formControlName="pin" type="password" (ionChange)="validarPin()"></ion-input>
+        </ion-item>
+
+        <div class="alert-danger" *ngIf="pin.invalid && (pin.dirty || pin.touched)">
+          <div class="container-error-message" *ngIf="pin.errors.required">
+              <ion-icon slot="start" name="alert-circle-outline"></ion-icon> El campo es requerido
+          </div>
+        </div>
+
+        <ion-item>
+          <ion-label position="floating">Confirmar PIN de seguridad</ion-label>
+          <ion-input formControlName="pin2" type="password" (ionChange)="validarPin()"></ion-input>
+        </ion-item>
+        <div class="alert-danger" *ngIf="pin2.invalid && (pin2.dirty || pin2.touched)">
+          <div class="container-error-message" *ngIf="pin2.errors.required">
+              <ion-icon slot="start" name="alert-circle-outline"></ion-icon> El campo es requerido
+          </div>
+        </div>
+        <div class="alert-danger" *ngIf="(pin2.dirty || pin2.touched) && !pinIgual == true">
+          <div class="container-error-message">
+            <ion-icon slot="start" name="alert-circle-outline"></ion-icon> Este campo no coincide con el PIN
+          </div>
+        </div>
+      </form>
+      <div class="contetnInput">
+        <ion-button shape="round" expand="full" class="button" [disabled]="validarFormulario()" (click)="registrar()">SIGUIENTE</ion-button>
+      </div>
     </div>
   </div>
 </ion-content>

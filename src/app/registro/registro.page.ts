@@ -36,9 +36,7 @@ export class RegistroPage implements OnInit {
   }
 
   enviarNumero(): void {
-    this.getData.numeroTelefono = this.telefono;
-    console.log(this.getData.numeroTelefono);
-    
+    this.getData.numeroTelefono = this.telefono;   
     this.router.navigate(['/registro/codigo-seguridad']);
   }
 

@@ -11,7 +11,11 @@ const routes: Routes = [
   {
     path: 'codigo-seguridad',
     loadChildren: () => import('./codigo-seguridad/codigo-seguridad.module').then( m => m.CodigoSeguridadPageModule)
+  },  {
+    path: 'finalizar',
+    loadChildren: () => import('./finalizar/finalizar.module').then( m => m.FinalizarPageModule)
   }
+
 ];
 
 @NgModule({

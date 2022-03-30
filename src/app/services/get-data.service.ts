@@ -8,10 +8,15 @@ import { CryptoService } from './crypto.service';
 export class GetDataService {
 
   public numeroTelefono: number;
+  public datosRegistro: any;
 
   constructor(private http: HttpClient, private crypto: CryptoService) { }
 
-  codigoTelefonico(data): any {    
-    return this.http.post('https://api.bancoink.biz/qa/signup/sendSmsVerificationNumber?apiKey=030106', {payload:data});
+  tipoDocumeto(): any {    
+    return this.http.get('https://api.bancoink.biz/qa/signup/documentTypes?apiKey=030106');
+  }
+
+  genero(): any {
+    return this.http.get('https://api.bancoink.biz/qa/signup/genders?apiKey=030106');
   }
 }

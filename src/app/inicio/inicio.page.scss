@@ -1,0 +1,61 @@
+.modal-contenido{
+    background-color:#FFFFFF;
+    width:300px;
+    padding: 20px 20px 20px 20px;
+    margin: 50% auto;
+    position: relative;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.modal{
+    background-color: #00000033;
+    position:fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    opacity:0;
+    pointer-events:none;
+    transition: all 1s;
+}
+
+#miModal{
+    opacity:1;
+    pointer-events:auto;
+    z-index: 12;
+}
+
+ion-grid {
+    width: 70%;
+}
+
+ion-img.img.md.hydrated {
+    width: 50%;
+    display: block;
+    margin: 5% auto;
+}
+
+.button {
+    width: 85%;
+    height: 35px;
+    font-size: 14px;
+    line-height: 50px;
+    font-family: Montserrat-bold;
+    margin: 4% auto;
+}
+
+.tittle {
+    font-size: 20px;
+    line-height: 0px;
+    font-weight: bold;
+    font-family: Montserrat-bold;
+    margin: auto;
+    color: #004B40;
+}
+
+p {
+    font-size: 16px;
+    color: #212121;
+    font-family: Avenir-LT-Std;
+}

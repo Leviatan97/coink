@@ -1,0 +1,119 @@
+.tittle{
+    font-size: 16px;
+    line-height: 32px;
+    font-weight: bold;
+    font-family: Montserrat-bold;
+    margin: auto 20%;
+    color: #004B40;
+}
+
+div .tittle{
+    font-size: 16px;
+    line-height: 0px;
+    font-weight: bold;
+    font-family: Montserrat-bold;
+    margin: auto;
+    color: #004B40;
+}
+
+.tab {
+    width: 50%;
+    margin: 0% auto;
+}
+
+.content {
+    width: 100%;
+    padding: 10px;
+    margin: 5% auto;
+}
+
+.item {
+    width: 100%;
+    padding: 10px;
+    --border-color: #1EEA00;
+}
+
+.img {
+    width: 70%;
+    margin: 5% auto;
+}
+
+p {
+    font-size: 14px;
+    color: #323232;
+    font-family: Avenir-LT-Std;
+    text-align: justify;
+}
+
+span {
+    font-size: 16px;
+    color: #757575;
+    font-weight: bold;
+}
+
+.input {
+    width: 100%;
+    height: 50px;
+    font-size: 24px;
+    line-height: 50px;
+    font-family: Avenir-LT-Std;
+    --background: #FAFAFA;
+    --color: #212121;
+    text-align: center;
+    box-shadow: 0px 7px 5px 0px #3535351a;
+}
+
+.contentInput {
+    padding: 3%;
+    margin-top: 10%;
+}
+
+.content div {
+    margin: auto 2%;
+}
+
+ion-label {
+    font-family: Montserrat-bold;
+    color: #004B40 !important;
+    text-transform: inherit !important;
+    font-size: 16px;
+}
+
+ion-button.button-disabled.button-solid {
+    --background: #D3D3D3;
+    --color: #757575;
+}
+
+a {
+    text-decoration-line: underline;
+    color: #004B40;
+    font-size: 16px;
+    font-family: Avenir-LT-Std;
+    font-weight: bold;
+}
+
+.content .contentCheck {
+    width: 100%;
+    margin: 3% 2%;
+}
+
+.textcheck {
+    font-size: 16px;
+    color: #004B40;
+    font-family: Avenir-LT-Std;
+    margin: 2%;
+}
+
+ion-checkbox {
+    --border-radius: 3px 3px 3px 3px;
+    --size: 16px
+}
+
+.contetnInput .button {
+    width: 100%;
+    height: 50px;
+    font-size: 16px;
+    line-height: 50px;
+    font-family: Montserrat-bold;
+    margin: 4% auto;
+}
